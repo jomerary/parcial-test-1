@@ -10,20 +10,52 @@ namespace parcial_test_1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-            Console.WriteLine("Hello, World!");
-            Console.WriteLine("Hello, World!");
-            Console.WriteLine("Hello, World!");
-            Console.WriteLine("Hello, World!");
-            Console.WriteLine("Hello, World!");
-            Console.WriteLine("Hello, World!");
-            Console.WriteLine("Hello, World!");
-            Console.WriteLine("Hello, World!");
-            // Se requiere un programa modular en c# que permita calcular una medida aritmetica y una moda de 5 muneros. solicite a un usuario 5 numeros enteros
-            // calcule la medida aritmetica( esta consiste en el numero intermedio de los 5 numetros ingreados)
-            //calcule la moda( la moda representa el numero que va mas veces se repite de los 5 numeros ingresados)
-            // estructura 1. Calcular Media aritmetica y moda. 2. Salir Elija una opcion.
+            menu();
+        }
 
+        static void menu()
+        {
+            Console.Clear();
+            Console.WriteLine("------MENU PRINCIPAL------");
+            Console.WriteLine("1. Funcion calular Media Aritmetica y la Moda");
+            Console.WriteLine("2. Salir del Programa");
+            Console.WriteLine("ELIJA UNA OPCIÓN");
+
+            int opcion = Convert.ToInt32(Console.ReadLine());
+
+            switch (opcion)
+            {
+                case 1: calcularMediaModa(); menu(); break;
+                case 2: Console.WriteLine("Usted está saliendo del programa..."); Console.ReadKey(); break;
+                default: Console.WriteLine("Ingrese una opcion valida"); Console.ReadKey(); menu(); break;
+            }
+        }
+        static void calcularMediaModa()
+        {
+            double num1, num2, num3, num4, num5;
+            Console.WriteLine("Usted está en la función para calcular la media aritmetica y moda");
+            Console.WriteLine("Ingrese cinco numeros ");
+            Console.Write("Ingrese el primer numero: ");
+            num1 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Ingrese el segundo numero: ");
+            num2 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Ingrese el tercer numero: ");
+            num3 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Ingrese el cuarto numero: ");
+            num4 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Ingrese el quinto numero: ");
+            num5 = Convert.ToDouble(Console.ReadLine());
+
+            csAritmetica a = new csAritmetica(num1, num2, num3, num4, num5);
+            Console.WriteLine("Los numeros ingresados son:");
+            Console.WriteLine($"Primer num. : {a.getNumero1()}");
+            Console.WriteLine($"Segundo num. : {a.getNumero2()}");
+            Console.WriteLine($"Tercer num. : {a.getNumero3()}");
+            Console.WriteLine($"Cuarto num. : {a.getNumero4()}");
+            Console.WriteLine($"Quinto num. : {a.getNumero5()}");
+            Console.WriteLine($"La media aritmetica es: {a.calcularMediaAritmetica()} y la moda es :{a.calcularModa()}");
+
+            Console.ReadKey();
         }
     }
 }
